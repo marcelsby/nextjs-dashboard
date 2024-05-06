@@ -9,7 +9,15 @@ export const metadata: Metadata = {
   title: 'Customers',
 };
 
-export default function Page() {
+interface PageProps {
+  readonly searchParams?: {
+    query?: string;
+  };
+}
+
+export default function Page({ searchParams }: PageProps) {
+  const query = searchParams?.query ?? '';
+
   return (
     <div className="w-full">
       <h1 className={`${lusitana.className} mb-8 text-xl md:text-2xl`}>
@@ -17,7 +25,7 @@ export default function Page() {
       </h1>
       <Search placeholder="Search customers..." />
       <Suspense fallback={<CustomersTableSkeleton />}>
-        <Table query="" />
+        <Table query={query} />
       </Suspense>
     </div>
   );

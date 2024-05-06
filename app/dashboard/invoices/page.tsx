@@ -12,15 +12,15 @@ export const metadata: Metadata = {
   title: 'Invoices',
 };
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams?: {
+interface PageProps {
+  readonly searchParams?: {
     query?: string;
     page?: string;
   };
-}) {
-  const query = searchParams?.query || '';
+}
+
+export default async function Page({ searchParams }: PageProps) {
+  const query = searchParams?.query ?? '';
   const currentPage = Number(searchParams?.page) || 1;
 
   const totalPages = await fetchInvoicesPages(query);

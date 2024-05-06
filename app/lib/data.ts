@@ -187,8 +187,6 @@ export async function fetchCustomers() {
 export async function fetchFilteredCustomers(query: string) {
   noStore();
 
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
   try {
     const data = await sql<CustomersTableType>`
 		SELECT

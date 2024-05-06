@@ -1,7 +1,11 @@
 import { fetchFilteredCustomers } from '@/app/lib/data';
 import Image from 'next/image';
 
-export default async function CustomersTable({ query }: { query: string }) {
+interface CustomersTableProps {
+  readonly query: string;
+}
+
+export default async function CustomersTable({ query }: CustomersTableProps) {
   const customers = await fetchFilteredCustomers(query);
 
   return (
